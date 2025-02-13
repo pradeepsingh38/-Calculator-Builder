@@ -1,13 +1,20 @@
 import { useState } from "react";
 import useCalculatorStore from "../store/index";
+import { evaluate } from 'mathjs'; // Import the evaluate function from math.js
+
 
 const Calculator = () => {
   const { components } = useCalculatorStore();
   const [input, setInput] = useState("");
 
   const calculateResult = () => {
+    // try {
+    //   setInput(eval(input).toString()); 
+    // } catch {
+    //   setInput("Error");
+    // }
     try {
-      setInput(eval(input).toString()); 
+      setInput(evaluate(input).toString());
     } catch {
       setInput("Error");
     }
